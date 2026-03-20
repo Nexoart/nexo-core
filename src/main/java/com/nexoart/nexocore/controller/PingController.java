@@ -8,6 +8,6 @@ public class PingController {
 
     @GetMapping("/ping")
     public String ping() {
-        return "Nexo-Core está online e aguardando as artes! 🎨";
+        return "Nexo-Core está online!";
     }
 }
