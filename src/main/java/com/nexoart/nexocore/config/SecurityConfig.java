@@ -22,7 +22,7 @@ import org.springframework.security.web.SecurityFilterChain;
                                     "/v3/api-docs"
                             ).permitAll()
                             //rotas publicos
-                            .requestMatchers("/ping", "/auth/register").permitAll()
+                            .requestMatchers("/ping", "/auth/register","/posts/**").permitAll()
                             .requestMatchers(HttpMethod.POST, "/upload").permitAll()
                             .anyRequest().authenticated());
 
