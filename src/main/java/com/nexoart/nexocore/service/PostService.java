@@ -20,4 +20,7 @@ public class PostService {
     public List<Post> listarTodos(){
         return repository.findAll();
     }
+    public void deletar(Long id) {
+        repository.deleteById(id);
+    }
 }

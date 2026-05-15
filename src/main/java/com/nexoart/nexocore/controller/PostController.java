@@ -1,6 +1,7 @@
 package com.nexoart.nexocore.controller;
 import com.nexoart.nexocore.entity.Post;
 import com.nexoart.nexocore.service.PostService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,5 +26,12 @@ public class PostController {
     @GetMapping
     public List<Post> listar(){
        return service.listarTodos();
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletar(@PathVariable Long id) {
+
+        service.deletar(id);
+
+        return ResponseEntity.noContent().build();
     }
 }
