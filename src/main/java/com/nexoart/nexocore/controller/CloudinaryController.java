@@ -23,7 +23,8 @@ public class CloudinaryController {
         try{
             String url = cloudinaryService.uploadFile(file);
             return ResponseEntity.ok(url);
-        }catch (Exception e) {
+        } catch (Exception e) {
+            e.printStackTrace(); // ISSO AQUI FAZ O ERRO APARECER EM VERMELHO NO CONSOLE!
             return ResponseEntity.status(500).body("Erro no upload");
         }
     }
