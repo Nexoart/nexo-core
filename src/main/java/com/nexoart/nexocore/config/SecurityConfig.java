@@ -28,11 +28,12 @@ public class SecurityConfig {
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers("/perfil/**").authenticated()
                         .requestMatchers(HttpMethod.GET, "/posts/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/posts/**").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/posts/**").permitAll()
                         .requestMatchers(HttpMethod.DELETE, "/posts/**").authenticated()
                         .requestMatchers(HttpMethod.PUT, "/posts/**").authenticated()
                         .requestMatchers("/ping").permitAll()
                         .requestMatchers(HttpMethod.POST, "/upload").permitAll()
+                        .requestMatchers("/users/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);

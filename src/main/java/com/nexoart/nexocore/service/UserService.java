@@ -22,6 +22,19 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    public User buscarPorId(Long id) {
+        return userRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+    }
+
+    public User atualizarPerfil(Long id, User dadosAtualizados) {
+        User user = buscarPorId(id);
+        if (dadosAtualizados.getName() != null) user.setName(dadosAtualizados.getName());
+        if (dadosAtualizados.getBio() != null) user.setBio(dadosAtualizados.getBio());
+        if (dadosAtualizados.getProfileImage() != null) user.setProfileImage(dadosAtualizados.getProfileImage());
+        if (dadosAtualizados.getWebsite() != null) user.setWebsite(dadosAtualizados.getWebsite());
+        if (dadosAtualizados.getCoverImage() != null) user.setCoverImage(dadosAtualizados.getCoverImage());
+        return userRepository.save(user);
+    }
 }
 
 

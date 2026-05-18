@@ -25,7 +25,10 @@ public class User implements UserDetails {
     private String linkedin;
     private String github;
     private String website;
-
+    private boolean isArtista = false;
+    private String coverImage;
+    private int seguidoresCount = 0;
+    private int curtidasCount = 0;
     //  Spring precisa disso pra autenticação funcionar
     @Override
     public String getUsername() {
@@ -86,4 +89,16 @@ public class User implements UserDetails {
 
     public String getWebsite() { return website; }
     public void setWebsite(String website) { this.website = website; }
+
+    public boolean isArtista() { return isArtista; }
+    public void setArtista(boolean artista) { isArtista = artista; }
+
+    public String getCoverImage() { return coverImage; }
+    public void setCoverImage(String coverImage) { this.coverImage = coverImage; }
+
+    public int getSeguidoresCount() { return seguidoresCount; }
+    public void setSeguidoresCount(int seguidoresCount) { this.seguidoresCount = seguidoresCount; }
+
+    public int getCurtidasCount() { return curtidasCount; }
+    public void setCurtidasCount(int curtidasCount) { this.curtidasCount = curtidasCount; }
 }

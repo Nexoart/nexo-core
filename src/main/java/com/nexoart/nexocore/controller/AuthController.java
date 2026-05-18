@@ -35,6 +35,7 @@ public class AuthController {
         user.setName(dto.getName());
         user.setEmail(dto.getEmail());
         user.setPassword(passwordEncoder.encode(dto.getPassword()));
+        user.setArtista(dto.isArtista());
 
         userRepository.save(user);
 

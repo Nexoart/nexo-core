@@ -1,5 +1,6 @@
 package com.nexoart.nexocore.controller;
 import com.nexoart.nexocore.entity.Post;
+import com.nexoart.nexocore.entity.Comentario;
 import com.nexoart.nexocore.service.PostService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +20,8 @@ public class PostController {
     }
 
     @PostMapping
-    public Post criar(@RequestBody Post post){
-        return service.salvar(post);
+    public Post criar(@RequestParam Long userId, @RequestBody Post post){
+        return service.salvar(post, userId);
     }
 
     @GetMapping
@@ -33,5 +34,15 @@ public class PostController {
         service.deletar(id);
 
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{id}/like")
+    public Post darLike(@PathVariable Long id) {
+        return service.darLike(id);
+    }
+
+    @PostMapping("/{id}/comments")
+    public Post adicionarComentario(@PathVariable Long id, @RequestBody Comentario comentario) {
+        return service.adicionarComentario(id, comentario);
     }
 }
