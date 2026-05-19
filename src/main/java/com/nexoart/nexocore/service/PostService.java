@@ -20,9 +20,9 @@ public class PostService {
     }
     
     public Post salvar(Post post, Long userId){
-        User artista = userRepository.findById(userId)
+        User user = userRepository.findById(userId)
             .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
-        post.setArtista(artista);
+        post.setArtista(user);
         post.setTimestamp(LocalDateTime.now());
         return repository.save(post);
     }

@@ -37,9 +37,11 @@ public class AuthController {
         user.setPassword(passwordEncoder.encode(dto.getPassword()));
         user.setArtista(dto.isArtista());
 
-        userRepository.save(user);
+        User savedUser = userRepository.save(user);
 
-        return ResponseEntity.ok("Usuário criado");
+        String token = jwtService.generateToken(savedUser.getEmail());
+
+        return ResponseEntity.ok(new AuthResponseDTO(token, savedUser.getId()));
     }
 
     @PostMapping("/login")
@@ -59,6 +61,6 @@ public class AuthController {
 
         String token = jwtService.generateToken(user.getEmail());
 
-        return ResponseEntity.ok(new AuthResponseDTO(token));
+        return ResponseEntity.ok(new AuthResponseDTO(token, user.getId()));
     }
 }
